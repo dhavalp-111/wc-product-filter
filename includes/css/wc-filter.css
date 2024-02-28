@@ -1,0 +1,283 @@
+
+.archive main#main {
+    padding: 40px;
+}
+
+.header_section .header_bottom {
+    background-color: #edf5ff;
+    /* color: red; */
+}
+
+.list-pro {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+}
+
+.list-pro .woo-form {
+    padding-right: 20px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.list-pro div#wc_filtered-product {
+    max-width: calc(100% - 400px);
+    width: 100%;
+}
+
+.list-pro .wc-default-filter {
+    position: absolute;
+    right: 6px;
+    top: -40px;
+}
+
+input.wc_variation-filter {
+    margin: 5px;
+}
+
+.wc_shop-filters h5  {
+    color: #9d6545;
+    font-family: fantasy;
+
+}
+
+/*ul.products.columns-4 {
+    display: none;
+}*/
+
+/*.woocommerce nav.woocommerce-pagination {
+    text-align: center;
+    display: none;
+}*/
+
+div#wc_filtered-product ul.products.columns-4  {
+    display: block;
+}
+
+
+/* Style for price range slider */
+#price-slider .ui-slider-handle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+
+    display: block;
+
+    border: 2px solid #a96c37;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    font-size: 1em;
+
+}
+
+#price-slider .ui-slider-handle:first-child {
+    margin-left: -6px;
+    color: black;
+}
+
+#price-slider .ui-slider-handle:last-child {
+    margin-left: -6px;
+}
+
+div#price-slider {
+    background: #a38c8f;
+    width: 80%;
+    /* height: 21px; */
+}
+
+.price_slider_range .ui-slider {
+     border: none;
+    background: #000;
+    height: 3px;
+    width: 96%;
+    margin: 20px 0;
+    position: relative;
+}
+
+#price-slider .ui-slider-handle:focus-visible {
+/*    background-color: #06b9c0;*/
+    outline: #a96c37;
+}
+
+.wc_pagination-links .Active a {
+   /* background-color: 007bff;
+    color: white;
+    border-color: 007bff;*/
+
+        background-color: #9d6545;
+    color: #fff !important;
+    border-color: #9d6545;
+}
+
+a.page-link,
+.page-link:hover
+ {
+    color: #9d6545 !important;
+}
+
+
+.wc_pagination-links ul.pagination {
+    justify-content: center;
+}
+/*p.woocommerce-result-count {
+    display: none;
+}
+*/
+/*.woocommerce-notices-wrapper {
+    display: none;
+}
+
+
+form.woocommerce-ordering {
+    display: none;
+}*/
+/*--- /.price-range-slider ---*/
+
+
+ul.products li.product h2.woocommerce-loop-product__title {
+    font-size: 20px !important;
+    color: black;
+}
+
+/*ul.products li.product span.price {
+    color: #000000 !important;
+    font-size: 16px !important;
+}*/
+ul.products li.product a.button {
+    font-size: 15px;
+    color: #fff;
+    background-color: black;
+}
+
+ul.products li.product img.attachment-woocommerce_thumbnail {
+    margin-bottom: 0 !important;
+}
+
+.woo-form input#wc_reset-button {
+    background-color: #9d6545;
+    color: #fff;
+    border-color: #9d6545;
+    padding: 4px 40px;
+}
+
+.color-swatch {
+    display: inline-block;
+    width: 30px; /* Adjust as needed */
+    height: 30px; /* Adjust as needed */
+    margin-right: 8px; /* Adjust as needed */
+    border: 1px solid #ccc; /* Adjust as needed */
+    cursor: pointer;
+/*    outline: 1px solid #201b1b94;*/
+}
+#price-slider .ui-slider-handle:last-child {
+    margin-left: -6px;
+    background-color: #a96c37;
+}
+
+
+.price-input {
+    max-width: 330px;
+    width: 100%;
+    display: flex;
+    margin: 7px 0 7px;
+}
+
+
+.price-input .field {
+    width: 50%;
+    padding-right: 20px;
+}
+
+.price-input .field input {
+    width: 100%;
+}
+
+.close-cat {
+    position: relative;
+}
+
+div#selectedValues {
+    display: flex;
+    position: absolute;
+    top: -40px;
+}
+.close-cat #selectedValues p {
+    position: relative;
+    margin-right: 40px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    color: #9d6545;
+    width: max-content;
+
+}
+.close-cat #selectedValues p::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: -17px;
+    width: 10px;
+    height: 10px;
+    background-image: url('http://localhost/Dhaval/wordpress/wp-content/uploads/2024/02/close.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+/*
+span.color-swatch.selected {
+    outline: 3px solid #403634;
+}*/
+body {
+  margin: 0;
+  padding: 0;
+  background: #15202B;
+}
+
+span.color-swatch.selected {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 6rem;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+  width: 30px; 
+  height: 30px;
+  margin-right: 8px;
+  background: #15202B;
+}
+
+span.color-swatch.selected::before,
+span.color-swatch.selected::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  background: linear-gradient(45deg,red,blue,green,yellow,#e11d74,black,#ffff00,#aa0000);
+  background-size: 400%;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  z-index: -1;
+  animation: animate 25s linear infinite;
+}
+
+span.color-swatch.selected::after {
+  filter: blur(25px);
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
