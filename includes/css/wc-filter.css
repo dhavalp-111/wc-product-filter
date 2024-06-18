@@ -263,6 +263,9 @@ span.color-swatch.selected::after {
   z-index: -1;
   animation: animate 25s linear infinite;
 }
+.stock-availability {
+    margin-top: 15px;
+}
 
 span.color-swatch.selected::after {
   filter: blur(25px);
@@ -280,4 +283,27 @@ span.color-swatch.selected::after {
   100% {
     background-position: 0 0;
   }
+}
+@media only screen and (max-width:767px){
+    .list-pro{
+        flex-wrap: wrap;
+    }
+    .list-pro .woo-form{
+        max-width: 100%;
+    }
+    .list-pro div#wc_filtered-product{
+        max-width: 100%;    
+    }
+    .list-pro .wc-default-filter{
+        position: unset;
+    }
+    div#selectedValues{
+        position: unset;
+    }
+}
+
+@media only screen and (max-width:575px){
+    .archive main#main {
+        padding: 20px;
+    }
 }

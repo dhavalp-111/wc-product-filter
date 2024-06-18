@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Arr;
+
 class WooCommerce_Filter {
 
     public function __construct() {
@@ -148,7 +151,10 @@ class WooCommerce_Filter {
         echo '<label for="search_filter">' . __('Filter by Search', 'woocommerce-filter') . '</label><br><br>';
 
         echo '<input type="checkbox" name="price_filter" id="filter_checkbox" value="on" ' .checked('on', get_option('price_filter_checked'), false) . '>' ;
-        echo '<label for="price_filter">' . __('Filter by price range', 'woocommerce-filter') . '</label><br>';
+        echo '<label for="price_filter">' . __('Filter by price range', 'woocommerce-filter') . '</label><br><br>';
+
+        echo '<input type="checkbox" name="stock_filter" id="filter_checkbox" value="on"' .checked('on', get_option('stock_filter_checked'),false ) . '>';
+        echo '<lable for="stock_filter">' . __('Filter by stock availibility', 'woocommerce-filter') . '<lable><br><br>';
     }
 
     // Save custom settings
@@ -158,6 +164,7 @@ class WooCommerce_Filter {
        update_option('search_filter_checked', isset($_POST['search_filter']) ? 'on' : 'off');
        update_option('sale_filter_checked', isset($_POST['sale_filter']) ? 'on' : 'off');   
        update_option('price_filter_checked', isset($_POST['price_filter']) ? 'on' : 'off');   
+       update_option('stock_filter_checked', isset($_POST['stock_filter']) ? 'on' : 'off');
     }
 
     // Custom product filter
@@ -167,6 +174,7 @@ class WooCommerce_Filter {
         $sale_filter_checked = get_option('sale_filter_checked', false);
         $search_filter_checked = get_option('search_filter_checked', false);
         $price_filter_checked = get_option('price_filter_checked', false);
+        $stock_filter_checked = get_option('stock_filter_checked', false);
 
         $product_cats = get_terms( array(
             'taxonomy' => 'product_cat',
@@ -240,7 +248,7 @@ class WooCommerce_Filter {
                         </div>
                     <?php } ?>
                    
-                     <?php // if ($price_filter_checked === 'on') { ?>
+                     <?php  if ($price_filter_checked === 'on') { ?>
                         <h5><?php _e('Price Range:', 'woocommerce-filter'); ?></h5>
                         <div class="price-input">
                             <div class="field">
@@ -257,13 +265,23 @@ class WooCommerce_Filter {
                             <div id="price-slider"></div>
                             <span id="price-range">₹<?php echo $min_price; ?> - ₹<?php echo $max_price; ?></span>
                         </div>
-                    <?php // } ?>  
+                    <?php  } ?>  
+
+                    <?php if ($stock_filter_checked === 'on') { ?>    
+                        <div class="stock-availability">
+                           <h5>Stock Availability</h5>
+                           <input type="checkbox" name="in-stock[]" id="wc-in-stock" value="in-stock">
+                           <label for="wc-in-stock">In Stock</label>
+                           <input type="checkbox" name="out-of-stock[]" id="wc-out-of-stock" value="out-of-stock">
+                           <label for="wc-out-of-stock">Out Of Stock</label>
+                        </div>
+                        <?php } ?>
                     <br>
                     <input type="hidden" name="post_type" value="product" />
                     <input type="button" id="wc_reset-button" value="<?php _e('Reset', 'woocommerce-filter'); ?>" />
                 </form>
             </div>
-            <div class="close-cat">
+            <div class="close-cat"> 
                 <div id="selectedValues"></div> 
             </div>
             <div class="wc-default-filter">
@@ -339,6 +357,19 @@ class WooCommerce_Filter {
                     'value' => array($minPrice, $maxPrice),
                     'type' => 'numeric',
                     'compare' => 'BETWEEN',
+                );
+            }
+            if (!empty($formData['in-stock'])) {
+                $args['meta_query'][] = array(
+                    'key' => '_stock_status',
+                    'value' => 'outofstock',
+                    'compare' => '!=',
+                );
+            } elseif (!empty($formData['out-of-stock'])) {
+                $args['meta_query'][] = array(
+                    'key' => '_stock_status',
+                    'value' => 'outofstock',
+                    'compare' => '=',
                 );
             }
 
