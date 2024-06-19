@@ -236,16 +236,3 @@ jQuery(document).ready(function($) {
     // Initial load
     filterApplied = true; // Update filter status
 }); 
-
-// Custom Menu add using Filter
-
-$show_in_nav_menus = apply_filters('woocommerce_attribute_show_in_nav_menus', false, $name);
-
-add_filter('woocommerce_attribute_show_in_nav_menus', 'wc_reg_for_menus', 1, 2);
-
-function wc_reg_for_menus( $register, $name = '' ) {
-if ( $name == 'pa_test' ) $register = true;
-return $register;
-}
-
-	
