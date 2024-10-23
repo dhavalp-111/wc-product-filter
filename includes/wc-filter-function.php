@@ -176,6 +176,7 @@ class WooCommerce_Filter {
         $price_filter_checked = get_option('price_filter_checked', false);
         $stock_filter_checked = get_option('stock_filter_checked', false);
 
+
         $product_cats = get_terms( array(
             'taxonomy' => 'product_cat',
             'hide_empty' => false,
@@ -191,7 +192,7 @@ class WooCommerce_Filter {
         $max_price = isset($price_range[0]->max_price) ? intval($price_range[0]->max_price) : 0;
  
         ?>
- 
+        <?php if (($category_filter_checked === 'on') || ($search_filter_checked === 'on') || ($sale_filter_checked === 'on') || ($variation_filter_checked === 'on') || ($price_filter_checked === 'on') || ($stock_filter_checked === 'on'))  { ?>
         <div class="list-pro">
             <div class="woo-form">
                 <form method="get" class="wc_shop-filters" id="wc_shop-filters">
@@ -291,6 +292,7 @@ class WooCommerce_Filter {
             <div id="wc_filtered-product">
         <?php
     }
+}
 
     // AJAX callback for custom product filter query
     public function wc_filter_product_query() {
